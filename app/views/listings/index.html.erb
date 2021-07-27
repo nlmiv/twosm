@@ -1,2 +1,10 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<h1>All Listings</h1>
+
+<% @listings.each do |l| %>
+  <%= image_tag l.image, :class => 'thumb' if l.image.present? %>
+  <ul>
+    <li>Name: <%= link_to l.name, listing_path(l.id) %></li>
+    <li>Description: <%= l.description %></li>
+    <li>Price: <%= l.price %></li>
+  </ul>
+<% end %>

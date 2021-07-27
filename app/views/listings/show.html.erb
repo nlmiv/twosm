@@ -1,2 +1,17 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<h1><%= @listing.name %></h1>
+
+
+  <%= image_tag @listing.image, :class => 'feature' if @listing.image.present? %>
+  <ul>
+    <li>Name: <%= link_to @listing.name, @artists %></li>
+    <li>Description: <%= @listing.description %></li>
+    <li>Price: <%= @listing.price%></li>
+  </ul>
+
+  <%# @artist.works.each do |w| %>
+    <%# link_to image_tag(w.image, :class => 'thumb'), w %>
+  <%# end %>
+<div class="controls">
+  <%= link_to 'Edit Listing', edit_listing_path(@listing) %>
+  <%= link_to 'Delete Listing', @listing, :method => 'delete', :data => { :confirm => 'Are you sure?' }%>
+</div>
