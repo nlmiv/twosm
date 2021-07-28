@@ -1,17 +1,16 @@
-<h1><%= @listing.name %></h1>
+<h1><%# @listing.name %></h1>
 
-
-  <%= image_tag @listing.image, :class => 'feature' if @listing.image.present? %>
-  <ul>
-    <li>Name: <%= link_to @listing.name, @artists %></li>
-    <li>Description: <%= @listing.description %></li>
-    <li>Price: <%= @listing.price%></li>
-  </ul>
-
-  <%# @artist.works.each do |w| %>
-    <%# link_to image_tag(w.image, :class => 'thumb'), w %>
-  <%# end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag @listing.image, :class => 'feature' if @listing.image.present? %>
+  </div>
+  <div class="caption">
+    <h4>Name: <%= @listing.name %></h4>
+    <p>Price: <%= number_to_currency(@listing.price) %></p>
+    <p>Description: <%= @listing.description %></p>
+  </div>
+</div><br>
 <div class="controls">
-  <%= link_to 'Edit Listing', edit_listing_path(@listing) %>
-  <%= link_to 'Delete Listing', @listing, :method => 'delete', :data => { :confirm => 'Are you sure?' }%>
+  <%= link_to 'Edit Listing', edit_listing_path(@listing), :class => 'btn btn-outline-primary' %>
+  <%= link_to 'Delete Listing', @listing, :method => 'delete', :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-outline-danger' %>
 </div>

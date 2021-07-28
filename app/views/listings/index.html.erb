@@ -1,10 +1,16 @@
 <h1>All Listings</h1>
-
-<% @listings.each do |l| %>
-  <%= image_tag l.image, :class => 'thumb' if l.image.present? %>
-  <ul>
-    <li>Name: <%= link_to l.name, listing_path(l.id) %></li>
-    <li>Description: <%= l.description %></li>
-    <li>Price: <%= l.price %></li>
-  </ul>
-<% end %>
+  <div class="row">
+    <% @listings.each do |l| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= image_tag l.image, :class => 'thumb' if l.image.present? %>
+          <div class="card-body">
+            <h5><%= link_to l.name, listing_path(l.id) %></h5>
+            <p class="card-text"><%= number_to_currency(l.price) %></p>
+            <p class="card-text"><%= truncate l.description, :length => 35 %></p>
+            <%= truncate @story, :length => 30 %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
