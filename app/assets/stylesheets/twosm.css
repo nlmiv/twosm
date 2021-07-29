@@ -5,7 +5,8 @@ body {
 }
 
 .thumb {
-  height: 12em;
+  height: 18em;
+  padding: 2px;
 }
 
 .feature {
@@ -34,5 +35,5 @@ body {
 }
 
 .col-md-3 {
-  padding-bottom: 60px;
+  padding-bottom: 30px;
 }

@@ -17,10 +17,11 @@
 
   <div class="form-group">
     <%= f.label :image %>
-    <%= f.url_field :image, :class => 'form-control' %>
+    <%# f.url_field :image, :class => 'form-control' %>
+    <%= f.file_field :image, :multiple => false, :class => 'form-control' %>
   </div><br>
   <div class="form-group">
-    <%= f.submit :class => 'btn btn-primary btn-lg' %>  
+    <%= f.submit :class => 'btn btn-primary btn-lg' %>
   </div>
 
 <% end %>

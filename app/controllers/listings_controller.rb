@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order("id DESC")
   end
 
   def new
@@ -9,6 +9,11 @@ class ListingsController < ApplicationController
 
   def create
     listing = Listing.create listing_params
+    if params[:listing][:image].present?
+      req = Cloudinary::Uploader.upload params[:listing][:image]
+      listing.image = req["public_id"]
+    end
+    listing.save
     redirect_to listing
   end
 
@@ -18,6 +23,10 @@ class ListingsController < ApplicationController
 
   def update
     listing = Listing.find params[:id]
+    if params[:listing][:image].present?
+      req = Cloudinary::Uploader.upload params[:listing][:image]
+      listing.image = req["public_id"]
+    end
     listing.update listing_params
     redirect_to listing # GET show
   end
@@ -34,6 +43,7 @@ class ListingsController < ApplicationController
 
   private
   def listing_params
-    params.require(:listing).permit(:name, :description, :price, :image)
+    # params.require(:listing).permit(:name, :description, :price, :image) # before cloudinary
+    params.require(:listing).permit(:name, :description, :price)
   end
 end

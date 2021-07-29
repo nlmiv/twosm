@@ -3,7 +3,12 @@
     <% @listings.each do |l| %>
       <div class="col-md-3">
         <div class="card">
-          <%= image_tag l.image, :class => 'thumb' if l.image.present? %>
+          <%# image_tag l.image, :class => 'thumb' if l.image.present? %>
+          <% if l.image.present? %>
+            <%= cl_image_tag l.image, :class => 'thumb' %>
+          <% else %>
+            <%= image_tag '/assets/default.png', :class => 'thumb' %>
+          <% end %>
           <div class="card-body">
             <h5><%= link_to l.name, listing_path(l.id) %></h5>
             <p class="card-text"><%= number_to_currency(l.price) %></p>
