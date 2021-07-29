@@ -8,3 +8,8 @@ l6 = Listing.create :name => 'Item 6', :description => 'Quis, eligendi!, consect
 l7 = Listing.create :name => 'Item 7', :description => 'Quis, eligendi!, consectetur adipisicing elit. Dolor sit amet', :price => 777.77, :image => ''
 l8 = Listing.create :name => 'Item 8', :description => 'Quis, eligendi!, consectetur adipisicing elit. Dolor sit amet', :price => 888.88, :image => ''
 puts "#{ Listing.count } listings"
+
+
+# User.destroy_all
+# u1 = User.create :name => 'Han Solo', :email => 'hs@ga.co', :admin => true,  :buyer => true, :seller => true
+# puts "#{ User.count } users"

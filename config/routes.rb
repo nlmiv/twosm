@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
   root :to => 'listings#index'
-  # resources :users, :only => [:new, :create, :index]  #:except => [:destroy]
+  # resources :users, :only => [:new, :create, :edit, :index]  #:except => [:destroy]
   resources :listings
+  # resources :users, :only => [:new, :create]
+  resources :users
 
   get 'pages/about'
   get 'pages/contact'

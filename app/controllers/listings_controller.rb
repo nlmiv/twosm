@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.all.order("id DESC")
+    @listings = Listing.all.order("id ASC")
   end
 
   def new
