@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :check_for_admin, :only => [:index]
+  before_action :check_for_login
+
   def index # for admins
       @users = User.all
   end

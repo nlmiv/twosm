@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  before_action :check_for_login, :except => [:index, :show]
+
   def index
     @listings = Listing.all.order("id ASC")
   end

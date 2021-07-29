@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'pages/contact'
 
-  # get    '/login' => 'session#new' # singular name as its a singular session, theres no session index
-  # post   '/login' => 'session#create'
-  # delete '/login' => 'session#destroy'
+  get    '/login' => 'session#new' # singular name as its a singular session, theres no session index
+  post   '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
+
 end
