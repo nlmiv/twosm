@@ -2,7 +2,11 @@ class ListingsController < ApplicationController
   before_action :check_for_login, :except => [:index, :show]
 
   def index
-    @listings = Listing.all.order("id ASC")
+    if @current_user.present?
+      @listings = Listing.where(user_id: @current_user.id).order("id ASC")
+    else
+        @listings = Listing.all.order("id ASC")
+    end
   end
 
   def new
@@ -11,6 +15,7 @@ class ListingsController < ApplicationController
 
   def create
     listing = Listing.create listing_params
+    listing.user_id = @current_user.id
     if params[:listing][:image].present?
       req = Cloudinary::Uploader.upload params[:listing][:image]
       listing.image = req["public_id"]

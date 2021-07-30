@@ -1,9 +1,3 @@
-<nav>
-  <%# link_to 'Home', root_path %>
-  <%# link_to 'About Us', pages_about_path %>
-  <%# link_to 'Contact Us', pages_contact_path %>
-</nav>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to '2SM', root_path, :class => 'navbar-brand'   %>
@@ -23,17 +17,19 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            User Action
+            <% if @current_user.present? %>
+              <%= @current_user.name  %>
+            <% else %>
+              Welcome Guest
+            <% end %>
           </a>
-          <ul class="dropdown-menu nav-bar-right" aria-labelledby="navbarDropdown">
-            <!-- <li><a class="dropdown-item" href="#">Login</a></li> -->
+          <ul class="dropdown-menu nav-bar" aria-labelledby="navbarDropdown">
             <% if @current_user.present? %>
               <%= link_to 'Logout', login_path, :method => 'delete', :class => 'dropdown-item' %>
             <% else %>
               <%= link_to 'Login', login_path, :class => 'dropdown-item' %>
             <% end %>
 
-            <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
             <% if !@current_user.present? %>
               <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'Sign up', new_user_path, :class => 'dropdown-item' %></li>
@@ -43,14 +39,6 @@
             <% end %>
           </ul>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-      </ul> -->
-      <!-- <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
     </div>
   </div>
 </nav>

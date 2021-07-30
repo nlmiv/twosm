@@ -25,3 +25,6 @@
   </div>
 
 <% end %>
+<% if @current_user.present? %>
+  <%= link_to 'Back', root_path, :class => 'btn btn-link btn-lg'   %>
+<% end %>
